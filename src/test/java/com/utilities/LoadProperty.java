@@ -34,6 +34,7 @@ public class LoadProperty {
 		Constants.chrome_driver_location = property.getProperty("chrome_driver_location");
 		Constants.edge_driver_location = property.getProperty("edge_driver_location");
 		Constants.testData_path = property.getProperty("testdata_path");
+		Constants.tweet_data = property.getProperty("tweet_data");
 		
 
 	}

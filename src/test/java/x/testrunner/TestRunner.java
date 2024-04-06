@@ -9,7 +9,9 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions (
 		features = "src\\test\\java\\x\\features\\x.feature",
 		glue = "x.stepdefinition",
-		plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
+		plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
+		dryRun = false,
+		tags = "@post"
 		)
 
 
