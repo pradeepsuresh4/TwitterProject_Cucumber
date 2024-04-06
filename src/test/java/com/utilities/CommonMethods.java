@@ -27,7 +27,7 @@ public class CommonMethods {
 	public static void explicitWait(WebElement element, int time) {
 		// wait for an element
 		WebDriverWait wait = new WebDriverWait(driver, time);
-		wait.until(ExpectedConditions.visibilityOf(element));
+		wait.until(ExpectedConditions.elementToBeClickable(element));
 
 	}
 	

@@ -57,7 +57,8 @@ public class StepDefinition {
 		}
 
 	}
-	@After
+
+	 @After
 	public void closeBrowser() {
 		// to close browser
 		driver.quit();
@@ -171,10 +172,82 @@ public class StepDefinition {
 	@Then("user clicks on create account icon")
 	public void user_clicks_on_create_account_icon() throws InterruptedException {
 
-//		WebElement submit = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/button"));
-//		CommonMethods.explicitWait(submit, 5);
-		Thread.sleep(5000);
+		WebElement submit = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/button"));
+		CommonMethods.explicitWait(submit, 5);
+
 		CommonMethods.screenSnap("Account Created");
+	}
+
+	@When("user clicks on sign in option")
+	public void user_clicks_on_sign_in_option() throws InterruptedException {
+		WebElement signin = driver.findElement(
+				By.xpath("//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/div[1]/div[1]/div/div[3]/div[5]/a"));
+		signin.click();
+		//Thread.sleep(2000);
+		CommonMethods.implicitWait(5);
+	}
+
+	@Then("user enters the username and password")
+	public void user_enters_the_username_and_password() throws InterruptedException {
+		// user enters user name and password to login
+		
+		WebElement username = driver.findElement(By.xpath("//*[@name='text']"));
+//		CommonMethods.explicitWait(username, 5);
+		username.clear();
+		username.sendKeys(Constants.username);
+
+		// next icon
+		WebElement next = driver.findElement(By.xpath(
+				"//*[@id=\"layers\"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[6]/div"));
+		next.click();
+
+		// password
+		//Thread.sleep(2000);
+		CommonMethods.implicitWait(5);
+		WebElement password = driver.findElement(By.xpath("//*[@name='password']"));
+//		CommonMethods.explicitWait(password, 5);
+		password.clear();
+		password.sendKeys(Constants.password);
+
+		// login icon
+		WebElement login = driver.findElement(By.xpath(
+				"//*[@id=\"layers\"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div/div/div/div"));
+		login.click();
+
+	}
+
+	@Then("user login into twitter")
+	public void user_login_into_twitter(){
+
+		// login icon
+		WebElement login = driver.findElement(By.xpath(
+				"//*[@id=\"layers\"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div/div/div/div/span/span"));
+		login.click();
+		
+
+	}
+
+	@Then("user creates a new tweet")
+	public void user_creates_a_new_tweet() throws InterruptedException {
+		CommonMethods.implicitWait(10);
+		// create the tweet
+		WebElement tweet = driver.findElement(By.xpath(
+				"//div[@aria-label='Post text']"));
+//		CommonMethods.explicitWait(tweet, 5);
+		tweet.clear();
+		tweet.sendKeys(Constants.tweet_data);
+
+	}
+
+	@Then("user shares the tweet on their feeds")
+	public void user_shares_the_tweet_on_their_feeds() throws InterruptedException {
+		// share tweet and take snap
+		WebElement post = driver.findElement(By.xpath(
+				"//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/div/div[1]/div/div[3]/div/div[2]/div[1]/div/div/div/div[2]/div[2]/div[2]/div/div/div/div[3]/div"));
+		post.click();
+		Thread.sleep(3000);
+		CommonMethods.screenSnap("Tweet Sent");
+
 	}
 
 }

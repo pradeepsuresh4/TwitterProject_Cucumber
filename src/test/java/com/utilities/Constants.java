@@ -9,6 +9,8 @@ public class Constants {
 	public static String chrome_driver_location;
 	public static String edge_driver_location;
 	public static String testData_path;
+	public static String tweet_data;
+	
 	
 
 	public static String chrome = "webdriver.chrome.driver";
